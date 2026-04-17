@@ -292,8 +292,8 @@ input {
 
 .marker {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     border: 2px solid white;

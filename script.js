@@ -326,6 +326,15 @@ function buildShareText() {
   ].join("\n");
 }
 
+function setScreenshot(imagePath, altText) {
+  const img = new Image();
+  img.onload = () => {
+    locationImage.src = imagePath;
+    locationImage.alt = altText;
+  };
+  img.src = imagePath;
+}
+
 function renderHistory() {
   if (history.length === 0) {
     historyList.innerHTML = '<div class="empty-state">No rounds finished yet.</div>';
@@ -379,8 +388,7 @@ function loadRound() {
   roundStat.textContent = `Round ${roundIndex + 1} / ${currentGameLocations.length}`;
   scoreStat.textContent = `Score: ${totalScore}`;
   screenshotLabel.textContent = `Location ${roundIndex + 1}`;
-  locationImage.src = location.image;
-  locationImage.alt = `Screenshot for round ${roundIndex + 1}`;
+  setScreenshot(location.image, `Screenshot for round ${roundIndex + 1}`);
 
   resetMapView();
   updateIdleResultBox();
@@ -607,5 +615,6 @@ window.addEventListener("resize", () => {
   }
 });
 
+preloadImages(allLocations);
 renderHistory();
 returnToStart();

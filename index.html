@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoCraftrs</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>🗺️ GeoCraftrs</h1>
+        <p>Guess the CraftersMC location from a screenshot.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-pill" id="roundStat">Press Start</div>
+        <div class="stat-pill" id="scoreStat">Score: 0</div>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Screenshot</h2>
+          <span class="muted" id="screenshotLabel">5-round run</span>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+          <div class="start-card">
+            <h2>Start a 5-round GeoCraftrs run</h2>
+            <p>
+              You’ll see one screenshot at a time. Click on the world map where you think the screenshot was taken,
+              lock in your guess, then move on to the next round.
+            </p>
+            <p>
+              You can zoom in or out, or move the map. Click to make guess.
+            </p>
+            <div class="start-actions">
+              <button class="btn btn-primary" id="startBtn">Start Game</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-stage hidden" id="gameStage">
+          <div class="screenshot-wrap">
+            <div class="screenshot-frame">
+              <span class="image-badge">Round's location</span>
+              <img id="locationImage" src="assets/screenshots/placeholder-1.jpg" alt="Location screenshot" />
+            </div>
+          </div>
+
+          <div class="round-actions">
+            <button class="btn btn-primary" id="guessBtn" disabled>Lock In Guess</button>
+            <button class="btn btn-secondary" id="nextBtn" disabled>Next Round</button>
+            <button class="btn btn-secondary" id="restartBtn">Restart</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <h3>World Map</h3>
+            <span class="muted">Zoom, drag, then click to guess</span>
+          </div>
+
+          <div class="map-toolbar">
+            <button class="btn map-tool" id="zoomOutBtn" type="button">−</button>
+            <button class="btn map-tool" id="zoomInBtn" type="button">+</button>
+            <button class="btn map-tool" id="resetViewBtn" type="button">Reset Zoom</button>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <div class="map-frame" id="mapFrame" aria-label="Zoomable world map" role="application">
+            <div class="map-canvas" id="mapCanvas">
+              <img id="worldMap" src="images/map.png" alt="Bird-view Minecraft world map" />
+            </div>
+          </div>
+
+          <div class="result-box" id="resultBox">
+            <strong>Waiting to start</strong>
+            Press Start to begin a 5-round game.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel history" id="historySection">
+      <div class="panel-header">
+        <h3>Round History</h3>
+        <span class="muted">Finished rounds</span>
+      </div>
+
+      <div class="history-tools">
+        <div class="share-panel hidden" id="sharePanel">
+          <h4 id="shareSummary">Run complete</h4>
+          <p>You can copy the result text to share your run somewhere.</p>
+          <textarea id="shareText" readonly></textarea>
+          <div class="share-actions">
+            <button class="btn btn-primary" id="copyShareBtn" type="button">Copy Results</button>
+            <button class="btn btn-secondary" id="newGameBtn" type="button">Start New Game</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="history-list" id="historyList">
+        <div class="empty-state">No rounds finished yet.</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -360,6 +360,13 @@ function updateIdleResultBox() {
   `;
 }
 
+function preloadImages(locations) {
+  locations.forEach((location) => {
+    const img = new Image();
+    img.src = location.image;
+  });
+}
+
 function loadRound() {
   const location = currentGameLocations[roundIndex];
   roundLocked = false;
@@ -381,6 +388,8 @@ function loadRound() {
 
 function startGame() {
   currentGameLocations = pickGameLocations();
+  preloadImages(currentGameLocations);
+  
   roundIndex = 0;
   totalScore = 0;
   currentGuess = null;

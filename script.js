@@ -580,8 +580,8 @@ mapFrame.addEventListener("wheel", (event) => {
   zoomMap(direction, event.clientX, event.clientY);
 }, { passive: false });
 
-zoomInBtn.addEventListener("click", () => zoomMap(0.25));
-zoomOutBtn.addEventListener("click", () => zoomMap(-0.25));
+zoomInBtn.addEventListener("click", () => zoomMap(0.5));
+zoomOutBtn.addEventListener("click", () => zoomMap(-0.5));
 resetViewBtn.addEventListener("click", resetMapView);
 startBtn.addEventListener("click", startGame);
 guessBtn.addEventListener("click", lockGuess);
